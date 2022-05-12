@@ -3,4 +3,4 @@ project(battleship_game C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(battleship_game main.c)
+add_executable(battleship_game main.c definitions.h)

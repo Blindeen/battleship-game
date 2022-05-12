@@ -1,0 +1,8 @@
+//
+// Created by kubas on 12.05.2022.
+//
+
+#ifndef BATTLESHIP_GAME_DEFINITIONS_H
+#define BATTLESHIP_GAME_DEFINITIONS_H
+
+#endif //BATTLESHIP_GAME_DEFINITIONS_H
