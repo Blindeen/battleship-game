@@ -21,11 +21,13 @@ struct board_t{
     int height;
     char **board;
     unsigned char init:1;
+    int ships_amount;
     struct ship_t *ships;
 };
 
 int init_board(struct board_t **map, int width, int height); //Function set dimension for board and init flag
 bool validate(struct board_t *map); //Check if structure fields are initialized or have proper values
 void display_board(struct board_t *map); //Function display whole board
+int set_ships(struct board_t *map, int n); //Function set n ships on board
 
 #endif
