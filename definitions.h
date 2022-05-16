@@ -28,6 +28,8 @@ struct board_t{
 int init_board(struct board_t **map, int width, int height); //Function sets dimension for board and init flag
 bool validate(struct board_t *map); //Check if structure fields are initialized or have proper values
 void display_board(struct board_t *map); //Function displays whole board
+bool is_already(struct board_t *map, int x, int y); //Function checks if ship is already on a map
 int set_ships(struct board_t *map, int n); //Function sets n ships on board
+int hit_ship(struct board_t *map, int x, int y); //Function returns 1 if some ship was hit or 0 if not and remove ship from map
 
 #endif

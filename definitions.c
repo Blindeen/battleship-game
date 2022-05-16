@@ -85,6 +85,17 @@ void display_board(struct board_t *map)
     }
 }
 
+bool is_already(struct board_t *map, int x, int y)
+{
+    //Condition which checks if ship is set on x y position
+    if(*(*(map->board+y)+x) == 'S')
+    {
+        return true;
+    }
+
+    return false;
+}
+
 int set_ships(struct board_t *map, int n)
 {
     //Input validation
@@ -105,8 +116,15 @@ int set_ships(struct board_t *map, int n)
     int x, y;
     for(int i = 0; i < n; ++i)
     {
-        x = (*(ships+i)).x = rand()%map->width;
-        y = (*(ships+i)).y = rand()%map->height;
+        x = rand()%map->width;
+        y = rand()%map->height;
+        while(is_already(map, x, y))
+        {
+            x = rand()%map->width;
+            y = rand()%map->height;
+        }
+        (*(ships+i)).x = x;
+        (*(ships+i)).y = y;
         *(*(map->board+y)+x) = 'S';
     }
 
@@ -115,4 +133,22 @@ int set_ships(struct board_t *map, int n)
     map->ships = ships;
 
     return OK;
+}
+
+int hit_ship(struct board_t *map, int x, int y)
+{
+    //Input validation
+    if(!validate(map) || x < 0 || y < 0 || x > map->width-1 || y > map->height-1)
+    {
+        return INPUT_ERROR;
+    }
+
+    //Checking if ship is placed on x y position
+    if((*(*(map->board+y)+x)) == 'S')
+    {
+        *(*(map->board+y)+x) = 'X';
+        return 1; //Ship is place on x y position
+    }
+
+    return 0; //Ship is not placed on x y position
 }
